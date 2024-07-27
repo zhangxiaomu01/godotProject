@@ -10,7 +10,7 @@ var idle_node_name: String = "Idle"
 var walk_node_name: String = "Walk"
 var run_node_name: String = "Run"
 var jump_node_name: String = "Jump"
-var attack1_node_name: String = "Attack"
+var attack1_node_name: String = "Attack1"
 var death_node_name: String = "Death"
 
 # State machine conditions
@@ -30,6 +30,8 @@ var angular_acceleration: int
 var acceleration: int
 var just_hit: bool
 
+@onready var animation_tree = get_node("AnimationTree")
+@onready var playback = animation_tree.get("parameters/playback")
 @onready var camrot_h = get_node("CameraRoot/CameraH")
 @onready var player_mesh = get_node("Knight")
 
@@ -48,13 +50,20 @@ func _physics_process(delta: float) -> void:
 		if !on_floor:
 			vertical_velocity += Vector3.DOWN * gravity * 2 *delta
 		else:
-			vertical_velocity += Vector3.DOWN * gravity / 10
+			#vertical_velocity += Vector3.DOWN * gravity / 10
+			vertical_velocity = Vector3.ZERO
 		
+		attack1()
 		if on_floor and Input.is_action_just_pressed("jump") and !is_attacking:
 			vertical_velocity = Vector3.UP * jump_force
 		angular_acceleration = 10
 		movement_speed = 0
 		acceleration = 15
+		if (attack1_node_name in playback.get_current_node()):
+			is_attacking = true
+		else:
+			is_attacking = false
+			
 		var h_rot = camrot_h.global_transform.basis.get_euler().y
 		if (Input.is_action_pressed("forward") 
 			|| Input.is_action_pressed("backward")
@@ -96,4 +105,22 @@ func _physics_process(delta: float) -> void:
 		velocity.x = horizontal_velocity.x + vertical_velocity.x
 		velocity.y = vertical_velocity.y
 		velocity.z = horizontal_velocity.z + vertical_velocity.z
+		print("Velocity speed: ", velocity)
 		move_and_slide()
+	animation_tree["parameters/conditions/IsOnFloor"] = on_floor
+	animation_tree["parameters/conditions/IsInAir"] = !on_floor
+	animation_tree["parameters/conditions/IsWalking"] = is_walking
+	animation_tree["parameters/conditions/IsNotWalking"] = !is_walking
+	animation_tree["parameters/conditions/IsRunning"] = is_running
+	animation_tree["parameters/conditions/IsNotRunning"] = !is_running
+	animation_tree["parameters/conditions/IsDying"] = is_dying
+
+
+func attack1():
+	if (idle_node_name in playback.get_current_node() 
+		or walk_node_name in playback.get_current_node()
+		or run_node_name in playback.get_current_node()):
+			if (Input.is_action_just_pressed("attack")):
+				if !is_attacking:
+					playback.travel(attack1_node_name)
+			
