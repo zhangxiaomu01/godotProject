@@ -105,7 +105,6 @@ func _physics_process(delta: float) -> void:
 		velocity.x = horizontal_velocity.x + vertical_velocity.x
 		velocity.y = vertical_velocity.y
 		velocity.z = horizontal_velocity.z + vertical_velocity.z
-		print("Velocity speed: ", velocity)
 		move_and_slide()
 	animation_tree["parameters/conditions/IsOnFloor"] = on_floor
 	animation_tree["parameters/conditions/IsInAir"] = !on_floor
