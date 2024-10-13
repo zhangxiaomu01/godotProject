@@ -30,6 +30,11 @@ var angular_acceleration: int
 var acceleration: int
 var just_hit: bool
 
+# health and damage values
+var health: int = 100
+var max_health: int = 100
+var player_damage: int = 1
+
 @onready var animation_tree = get_node("AnimationTree")
 @onready var playback = animation_tree.get("parameters/playback")
 @onready var camrot_h = get_node("CameraRoot/CameraH")
@@ -123,3 +128,8 @@ func attack1():
 				if !is_attacking:
 					playback.travel(attack1_node_name)
 			
+
+
+func _on_damage_detector_body_entered(body:Node3D):
+	if body.is_in_group("monster") and is_attacking:
+		body.take_hit(player_damage)

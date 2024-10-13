@@ -13,7 +13,7 @@ var dying: bool = false
 var just_hit: bool = false
 
 var health: int = 4
-var damage: int = 2
+var enemey_damage: int = 2
 
 func _ready():
 	state_controller.change_state("Idle")
@@ -61,3 +61,19 @@ func _on_animation_tree_animation_finished(anim_name):
 
 func die():
 	self.queue_free()
+
+func take_hit(damage: int):
+	if !just_hit:
+		just_hit = true
+		get_node("just_hit_timer").start()
+		health -= damage
+		if health <= 0:
+			state_controller.change_state("Death")
+		
+		#knockback
+		var tween = create_tween()
+		tween.tween_property(
+			self, "global_position", global_position - direction * 0.5, 0.2)
+
+func _on_just_hit_timer_timeout():
+	just_hit = false
