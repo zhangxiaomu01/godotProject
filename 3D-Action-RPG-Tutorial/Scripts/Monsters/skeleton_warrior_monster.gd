@@ -77,3 +77,7 @@ func take_hit(damage: int):
 
 func _on_just_hit_timer_timeout():
 	just_hit = false
+
+func _on_damage_detector_body_entered(body:Node3D):
+	if body.is_in_group("player"):
+		body.take_hit(enemey_damage)

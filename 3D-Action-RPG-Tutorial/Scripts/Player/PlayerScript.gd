@@ -31,8 +31,8 @@ var acceleration: int
 var just_hit: bool
 
 # health and damage values
-var health: int = 100
-var max_health: int = 100
+var health: int = 5
+var max_health: int = 5
 var player_damage: int = 1
 
 @onready var animation_tree = get_node("AnimationTree")
@@ -128,8 +128,29 @@ func attack1():
 				if !is_attacking:
 					playback.travel(attack1_node_name)
 			
-
+func take_hit(damage: int):
+	if !just_hit:
+		just_hit = true
+		get_node("just_hit_timer").start()
+		health -= damage
+		if health <= 0:
+			is_dying = true
+			playback.travel(death_node_name)
+		
+		#knockback
+		var tween = create_tween()
+		tween.tween_property(
+			self, "global_position", global_position - direction * 0.5, 0.2)
 
 func _on_damage_detector_body_entered(body:Node3D):
 	if body.is_in_group("monster") and is_attacking:
 		body.take_hit(player_damage)
+
+
+func _on_animation_tree_animation_finished(anim_name:StringName):
+	if "Death" in anim_name:
+		self.queue_free()
+
+
+func _on_just_hit_timer_timeout():
+	just_hit = false
