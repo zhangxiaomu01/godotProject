@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2d1tty288gu6"]
+
+[ext_resource type="Theme" uid="uid://dropp2ee85xhd" path="res://Assets/my_theme.tres" id="1_qmmh0"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 566.0
+offset_bottom = 286.0
+theme = ExtResource("1_qmmh0")
