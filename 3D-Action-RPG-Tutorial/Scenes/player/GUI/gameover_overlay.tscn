@@ -32,3 +32,5 @@ text = "Game over!
 Try again!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="Panel/retry" to="." method="_on_retry_pressed"]
