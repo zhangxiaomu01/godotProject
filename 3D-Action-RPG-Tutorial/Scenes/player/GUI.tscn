@@ -5,6 +5,6 @@
 [node name="CanvasLayer" type="CanvasLayer"]
 
 [node name="Panel" type="Panel" parent="."]
-offset_right = 566.0
-offset_bottom = 286.0
+offset_right = 1152.0
+offset_bottom = 264.0
 theme = ExtResource("1_qmmh0")

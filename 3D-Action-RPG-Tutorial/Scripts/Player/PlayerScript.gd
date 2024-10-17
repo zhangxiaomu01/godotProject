@@ -149,7 +149,8 @@ func _on_damage_detector_body_entered(body:Node3D):
 
 func _on_animation_tree_animation_finished(anim_name:StringName):
 	if "Death" in anim_name:
-		self.queue_free()
+		await get_tree().create_timer(1.5).timeout
+		get_node("../gameover_overlay").game_over()
 
 
 func _on_just_hit_timer_timeout():

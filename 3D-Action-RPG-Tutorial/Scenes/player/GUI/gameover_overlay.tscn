@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwuf724bnxn75"]
+
+[ext_resource type="Script" path="res://Scripts/Player/GUI/gameover_overlay.gd" id="1_wqanq"]
+
+[node name="gameover_overlay" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_wqanq")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 72.0
+offset_top = 32.0
+offset_right = 1104.0
+offset_bottom = 552.0
+
+[node name="retry" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 408.0
+offset_top = 384.0
+offset_right = 608.0
+offset_bottom = 435.0
+theme_override_font_sizes/font_size = 25
+text = "Retry"
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_right = 1032.0
+offset_bottom = 352.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 100
+text = "Game over!
+Try again!"
+horizontal_alignment = 1
+vertical_alignment = 1
