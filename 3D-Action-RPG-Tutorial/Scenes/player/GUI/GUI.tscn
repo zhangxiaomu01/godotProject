@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2d1tty288gu6"]
+
+[ext_resource type="Script" path="res://Scripts/Player/GUI/GUI.gd" id="1_ub0cc"]
+[ext_resource type="Theme" uid="uid://dropp2ee85xhd" path="res://Assets/my_theme.tres" id="2_uys8l"]
+
+[node name="MainGUI" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_ub0cc")
+
+[node name="hp_bar" type="ProgressBar" parent="."]
+offset_right = 216.0
+offset_bottom = 48.0
+value = 50.0
+show_percentage = false
+
+[node name="container" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="background" type="Panel" parent="container"]
+offset_left = 104.0
+offset_top = 64.0
+offset_right = 1064.0
+offset_bottom = 560.0
+theme = ExtResource("2_uys8l")
+
+[node name="inventory" type="Control" parent="container"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="profile" type="Control" parent="container"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="container"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 128.0
+offset_right = 351.0
+offset_bottom = 214.0
+
+[node name="inventory_button" type="Button" parent="container/VBoxContainer"]
+layout_mode = 2
+text = "Inventory"
+
+[node name="profile_button" type="Button" parent="container/VBoxContainer"]
+layout_mode = 2
+text = "Profile"
+
+[connection signal="pressed" from="container/VBoxContainer/inventory_button" to="." method="_on_inventory_button_pressed"]
+[connection signal="pressed" from="container/VBoxContainer/profile_button" to="." method="_on_profile_button_pressed"]
