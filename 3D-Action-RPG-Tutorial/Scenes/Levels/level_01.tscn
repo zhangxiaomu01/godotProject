@@ -2,7 +2,7 @@
 
 [ext_resource type="MeshLibrary" uid="uid://dxk2p88c1rxtq" path="res://Scenes/Levels/EnvLibrary.tres" id="1_iuqmh"]
 [ext_resource type="PackedScene" uid="uid://c4n3ftchp8gjw" path="res://Scenes/player/player.tscn" id="2_cs6td"]
-[ext_resource type="PackedScene" uid="uid://bm76ilselr4aa" path="res://Scenes/Monsters/AIMelee/skeleton_warrior_monster.tscn" id="3_2t85u"]
+[ext_resource type="PackedScene" uid="uid://bm76ilselr4aa" path="res://Scenes/Monsters/skeleton_warrior_monster.tscn" id="3_2t85u"]
 [ext_resource type="PackedScene" uid="uid://bwuf724bnxn75" path="res://Scenes/player/GUI/gameover_overlay.tscn" id="4_rkh5d"]
 [ext_resource type="PackedScene" uid="uid://b2d1tty288gu6" path="res://Scenes/player/GUI/GUI.tscn" id="5_6l7w4"]
 
