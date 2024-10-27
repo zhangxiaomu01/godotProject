@@ -12,5 +12,5 @@ item_defense = 0
 item_health = 5
 stackable = true
 count = 1
-description = "This is a small potion."
+description = "This is a small potion. It heals you 5 hp."
 item_texture = ExtResource("1_tnpn5")

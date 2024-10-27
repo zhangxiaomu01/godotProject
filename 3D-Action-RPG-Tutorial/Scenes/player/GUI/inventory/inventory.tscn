@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4atxjdjdt0n8"]
+[gd_scene load_steps=3 format=3 uid="uid://c4atxjdjdt0n8"]
 
 [ext_resource type="Script" path="res://Scripts/Player/GUI/inventory/inventory_main.gd" id="1_mwfkw"]
+[ext_resource type="Script" path="res://Scripts/Player/GUI/inventory/inventory_slot.gd" id="2_cq606"]
 
 [node name="inventory" type="Control"]
 layout_mode = 3
@@ -11,8 +12,52 @@ script = ExtResource("1_mwfkw")
 
 [node name="grid" type="GridContainer" parent="."]
 layout_mode = 0
-offset_left = 512.0
-offset_top = 192.0
-offset_right = 1024.0
-offset_bottom = 448.0
+offset_left = 616.0
+offset_top = 168.0
+offset_right = 1128.0
+offset_bottom = 424.0
 columns = 6
+
+[node name="right_hand" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 544.0
+offset_top = 264.0
+offset_right = 584.0
+offset_bottom = 304.0
+script = ExtResource("2_cq606")
+
+[node name="body" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 240.0
+offset_right = 528.0
+offset_bottom = 280.0
+script = ExtResource("2_cq606")
+type = 2
+
+[node name="head" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 184.0
+offset_right = 528.0
+offset_bottom = 224.0
+script = ExtResource("2_cq606")
+type = 1
+
+[node name="legs" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 296.0
+offset_right = 528.0
+offset_bottom = 336.0
+script = ExtResource("2_cq606")
+type = 3
+
+[node name="feet" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 352.0
+offset_right = 528.0
+offset_bottom = 392.0
+script = ExtResource("2_cq606")
+type = 4

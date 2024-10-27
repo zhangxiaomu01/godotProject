@@ -15,4 +15,5 @@ var body_equipped: ItemData
 var player_damage: int = 0
 var player_defense: int = 0
 
-
+func heal_player(health: int) -> void:
+	pass
