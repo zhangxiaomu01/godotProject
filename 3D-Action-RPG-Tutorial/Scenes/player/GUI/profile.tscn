@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwa7affduy1xc"]
+
+[ext_resource type="Script" path="res://Scripts/Player/GUI/profile.gd" id="1_8s086"]
+
+[node name="profile" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_8s086")
+
+[node name="stats_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 208.0
+offset_right = 936.0
+offset_bottom = 440.0
+text = "This is my profile"
+horizontal_alignment = 1
+vertical_alignment = 1

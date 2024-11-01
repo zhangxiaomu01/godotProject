@@ -15,5 +15,12 @@ var body_equipped: ItemData
 var player_damage: int = 0
 var player_defense: int = 0
 
+var current_exp: int = 0
+var exp_to_next_level: int = 100
+
+var player_level: int = 1
+
+var shopping : bool = false
+
 func heal_player(health: int) -> void:
 	pass
